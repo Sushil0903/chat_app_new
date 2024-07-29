@@ -11,7 +11,7 @@ class _SpashState extends State<Spash> {
   @override
   void initState() {
     Future.delayed(
-      Duration(seconds: 3), () {
+      Duration(seconds: 4), () {
       Navigator.pushReplacementNamed(context, "/");
     },
     );
@@ -24,7 +24,13 @@ class _SpashState extends State<Spash> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        child: Image.network("https://mir-s3-cdn-cf.behance.net/project_modules/hd/b9909870073885.5b9763b13f233.gif",fit: BoxFit.fill,),
+        child: Center(
+          child: Container(
+            height: 200,
+            width: 200,
+            child: Image.asset("assets/chatlogo.gif",fit: BoxFit.cover,),
+          ),
+        ),
       ),
     );
   }

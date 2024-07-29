@@ -1,9 +1,11 @@
 import 'package:chat_app/Helper/login_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'Helper/firestore_helper.dart';
-import 'Model/user_model.dart';
+import '../Helper/firestore_helper.dart';
+import '../Model/user_model.dart';
+import '../controller/theme_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,6 +22,7 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController signIncontrol =TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var Themeint=Provider.of<ThemeController>(context,listen: false).theme;
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -46,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                         width: 300,
                         child: TextFormField(
                           controller: signIncontrol,
-                          decoration: InputDecoration(prefixIcon: Icon(Icons.email_outlined,color: Color(0xff15bd8c),),hintText: "Enter Email",border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                          decoration: InputDecoration(prefixIcon: Icon(Icons.email_outlined,color: (Themeint==1)?Color(0xff15bd8c):(Themeint==2)?Color(0xff318CE7):Color(0xffFC8CAC),),hintText: "Enter Email",border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                         ),
                       ),
                       SizedBox(height: 20,),
@@ -55,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                         width: 300,
                         child: TextFormField(
                           controller: signInpasswordcontrol,
-                          decoration: InputDecoration(prefixIcon: Icon(Icons.password,color: Color(0xff15bd8c),),hintText: "Enter Password",border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                          decoration: InputDecoration(prefixIcon: Icon(Icons.password,color: (Themeint==1)?Color(0xff15bd8c):(Themeint==2)?Color(0xff318CE7):Color(0xffFC8CAC),),hintText: "Enter Password",border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                   
                         ),
                       ),
@@ -109,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
                          height: 50,
                          width: 300,
                          child: Center(child: Text("Log In",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),),
-                         decoration: BoxDecoration(color: Color(0xff15bd8c),borderRadius: BorderRadius.circular(30)),
+                         decoration: BoxDecoration(color: (Themeint==1)?Color(0xff15bd8c):(Themeint==2)?Color(0xff318CE7):Color(0xffFC8CAC),borderRadius: BorderRadius.circular(30)),
                        ),
                      ),
                       SizedBox(height: 15,),
@@ -165,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 50,
                           width: 300,
                           child: Center(child: Text("Sign In with Google",style: TextStyle(color: Colors.white,fontSize: 18,fontWeight: FontWeight.bold),),),
-                          decoration: BoxDecoration(color: Color(0xff15bd8c),borderRadius: BorderRadius.circular(30)),
+                          decoration: BoxDecoration(color: (Themeint==1)?Color(0xff15bd8c):(Themeint==2)?Color(0xff318CE7):Color(0xffFC8CAC),borderRadius: BorderRadius.circular(30)),
                         ),
                       ),
                       SizedBox(height: 5,),
@@ -177,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
                               onTap: () {
                                 ButtonSignup();
                               },
-                              child: Text(" Sign Up",style: TextStyle(color: Color(0xff15bd8c),fontSize: 15,fontWeight: FontWeight.w500),)),
+                              child: Text(" Sign Up",style: TextStyle(color: (Themeint==1)?Color(0xff15bd8c):(Themeint==2)?Color(0xff318CE7):Color(0xffFC8CAC),fontSize: 15,fontWeight: FontWeight.w500),)),
                         ],
                       )
                     ],

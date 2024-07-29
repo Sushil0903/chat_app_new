@@ -92,7 +92,7 @@ class FirestoreHelper{
 
     await db.collection("chatrooms").doc(docId).collection("chat").add({
       "msg": msg,
-      "sent_by": LoginHelper.loginHelper.firebaseAuth.currentUser!.email,
+      "sent_by": LoginHelper.loginHelper.firebaseAuth.currentUser?.email,
       "received_by": receiver_id,
       "timestamp": DateTime.now(),
     });

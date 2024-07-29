@@ -1,9 +1,11 @@
 import 'package:chat_app/Helper/firestore_helper.dart';
 import 'package:chat_app/Helper/login_helper.dart';
-import 'package:chat_app/drawer.dart';
+import 'package:chat_app/controller/theme_controller.dart';
+import 'package:chat_app/view/drawer.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -16,12 +18,13 @@ class _HomePageState extends State<HomePage> {
   
   @override
   Widget build(BuildContext context) {
+    var Themeint=Provider.of<ThemeController>(context,listen: false).theme;
    User user= ModalRoute.of(context)?.settings.arguments as User;
     return Scaffold(
       backgroundColor: Color(0xfffbf7ed),
       appBar: AppBar(
         foregroundColor: Colors.white,
-        backgroundColor: Color(0xff15bd8c),
+        backgroundColor: (Themeint==1)?Color(0xff15bd8c):(Themeint==2)?Color(0xff318CE7):Color(0xffFC8CAC),
         title: Text("Chat App",style: TextStyle(color: Colors.white),),
         elevation: 10,
         shadowColor: Colors.grey,
